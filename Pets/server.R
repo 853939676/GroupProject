@@ -1,52 +1,28 @@
 library(shiny)
 library(plotly)
-pets <- read.csv("Lost__found__adoptable_pets.csv", sep = ",", header = TRUE)
+library(dplyr)
+library(ggplot2)
+
+source('./function.R')
+
+# Read dataset
+pets <- read.csv("Lost__found__adoptable_pets.csv", stringsAsFactors = FALSE, sep = ",", header = TRUE)
 
 # Define server logic required to draw a histogram/donut
-my.server <- function(input, output) {
+shinyServer(function(input, output) {
   
-  # You can access the values of the widget
-  # with input$checkGroup, e.g.
-  output$value <- renderPrint({ input$checkGroup })
- 
-  # Generate data for LOST ONLY ----
- 
-  output$Lost <- renderPlotly({
-   lost_pets <- pets %>% filter(Record_Type == "LOST")
-  
-   })
-  
-  # Generate data for FOUND ONLY ----
-  output$Found <- renderPlotly({
-   found_pets <- pets %>%  filter(Record_Type == "FOUND")
-  
-   })
-  
-  # Generate data for ADOPTABLE ONLY ----
-  output$Adoptable <- renderPlotly({
-   adoptable_pets <- pets %>% filter(Record_Type == "ADOPTABLE")
-  
-   })
-  
-  output$value <- renderPrint({  # change renderPrint to renderPlot
-    if(input$select == 1) {
-      print("this should plot by gender")
-      # add in plot function for GENDER
-      
-    } else if(input$select == 2) {
-      print("this should plot by breed")
-      # add in plot function for BREED
-      
-    } else {
-      print("")
-      # plot something random or first plot (because it will prob never get used)
-    }
-    
+  #creat Donut chart
+  output$Donut <- renderPlotly({
+    return(plot(pets, "donut", input$checkGroup, input$status, input$select))
   })
   
-}
-
-shinyServer(my.server)
-
-
-
+  # create bar chart
+  output$Bar <- renderPlotly({
+    return(plot(pets, "bar", input$checkGroup, input$status, input$select))
+  })
+  
+  output$Table <- DT::renderDataTable({
+    DT::datatable(pets, options = list(lengthMenu = c(5, 30, 50), pageLength = 5))
+  })
+  
+})
