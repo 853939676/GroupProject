@@ -1,14 +1,12 @@
 library(shiny)
 
-# Define UI for application that draws a histogram
 my.ui <- fluidPage(
+shinyUI(fluidPage(
   
-  # Application title
-  titlePanel("Old Faithful Geyser Data"),
-  
-  # Sidebar 
   sidebarLayout(
+    
     sidebarPanel(
+
        ## create checkbox menu for dog cat etc
       # Copy the chunk below to make a group of checkboxes
       checkboxGroupInput("checkGroup", label = h3("Check One or More Type of Pets"), 
@@ -18,6 +16,10 @@ my.ui <- fluidPage(
       
       hr()
     ),
+    
+    selectInput("select", label = h3("Display plot by:"), 
+                choices = list("Gender" = 1, "Breed" = 2)
+    )),
     
     # Show a plot of the generated distribution
     mainPanel(
@@ -30,6 +32,7 @@ my.ui <- fluidPage(
        )
     )
   )
+)
 )
 
 shinyUI(my.ui)
