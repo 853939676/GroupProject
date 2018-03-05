@@ -2,13 +2,15 @@ library(shiny)
 library(plotly)
 library(ggplot2)
 library(markdown)
+library(shinythemes)
 
 # Create Navbar Page
 # About, Table, Plot
-navbarPage("Welcome!",
-           shinythemes::themeSelector()
+
+ui = navbarPage("Welcome!",
+           theme = shinytheme("united"),
            tabPanel("About",
-           fluidRow(column(6, includeMarkdown("about.md"))
+           fluidRow( column(6, includeMarkdown("about.md"))
                     )
            ),
   
