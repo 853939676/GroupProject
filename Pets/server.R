@@ -1,26 +1,33 @@
-#
-# This is the server logic of a Shiny web application. You can run the 
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
+library(plotly)
+pets <- read.csv("Lost__found__adoptable_pets.csv", sep = ",", header = TRUE)
 
-# Define server logic required to draw a histogram
-shinyServer(function(input, output) {
-   
-  output$distPlot <- renderPlot({
-    
-    # generate bins based on input$bins from ui.R
-    x    <- faithful[, 2] 
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-    
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'darkgray', border = 'white')
-    
-  })
+# Define server logic required to draw a histogram/donut
+my.server <- function(input, output) {
   
-})
+  # You can access the values of the widget
+  # with input$checkGroup, e.g.
+  output$value <- renderPrint({ input$checkGroup })
+ 
+  # Generate data for LOST ONLY ----
+ 
+  output$Lost <- renderPlotly({
+   lost_pets <- pets %>% filter(Record_Type == "LOST")
+  
+   })
+  
+  # Generate data for FOUND ONLY ----
+  output$Found <- renderPlotly({
+   found_pets <- pets %>%  filter(Record_Type == "FOUND")
+  
+   })
+  
+  # Generate data for ADOPTABLE ONLY ----
+  output$Adoptable <- renderPlotly({
+   adoptable_pets <- pets %>% filter(Record_Type == "ADOPTABLE")
+  
+   })
+  
+}
+
+shinyServer(my.server)

@@ -1,33 +1,35 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
 
 # Define UI for application that draws a histogram
-shinyUI(fluidPage(
+my.ui <- fluidPage(
   
   # Application title
   titlePanel("Old Faithful Geyser Data"),
   
-  # Sidebar with a slider input for number of bins 
+  # Sidebar 
   sidebarLayout(
     sidebarPanel(
-       sliderInput("bins",
-                   "Number of bins:",
-                   min = 1,
-                   max = 50,
-                   value = 30)
+       ## create checkbox menu for dog cat etc
+      # Copy the chunk below to make a group of checkboxes
+      checkboxGroupInput("checkGroup", label = h3("Check One or More Type of Pets"), 
+                         choices = list("Dog" = 1, "Cat" = 2, "Other" = 3),
+                         selected = 1),
+      
+      
+      hr()
     ),
     
     # Show a plot of the generated distribution
     mainPanel(
-       plotOutput("distPlot")
+     
+    # Create tabs for page   
+       tabsetPanel(type = "tabs",
+                   tabPanel("Lost", plotlyOutput("Lost")),
+                   tabPanel("Found", plotlyOutput("Found")),
+                   tabPanel("Adoptable", plotlyOutput("Adoptable"))
+       )
     )
   )
-))
+)
+
+shinyUI(my.ui)
