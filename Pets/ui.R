@@ -6,7 +6,8 @@ library(markdown)
 # Create Navbar Page
 # About, Table, Plot
 navbarPage("Welcome!",
-  tabPanel("About",
+           shinythemes::themeSelector()
+           tabPanel("About",
            fluidRow(column(6, includeMarkdown("about.md"))
                     )
            ),
