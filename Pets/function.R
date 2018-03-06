@@ -18,7 +18,7 @@ plot <- function(data, style, group, status, type) {
     animal_type_data <- rbind(animal_type_data, dog)
     if ("Cat" %in% group) {
       animal_type_data <- rbind(animal_type_data, cat)
-      if ("Other" %in% group) {
+       if ("Other" %in% group) {
         animal_type_data <- rbind(animal_type_data, other)
       } else{
       }
@@ -80,8 +80,8 @@ donut_plot <- function(data) {
 bar_plot <- function(data) {
       p <- plot_ly(x = data$x,
               y = data$y,
-              type = "bar",xaxis = list(title = ""),
-              yaxis = list(title = ""))
+              type = "bar") %>% layout(margin = list(b = 160), xaxis = list(tickangle = 45))
+              
   
   p <- ggplotly(p)
   return(p)

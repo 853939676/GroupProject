@@ -20,7 +20,7 @@ ui = navbarPage("Welcome!",
   
   tabPanel("Plot",
     (sidebarLayout(
-      sidebarPanel(
+      sidebarPanel( width = 3,
         ## create checkbox menu for dog cat etc
         checkboxGroupInput("checkGroup", label = h3("Check One or More Type of Pets"),
                            choices = list("Dog" = "Dog", "Cat" = "Cat", "Other" = "Other"),
@@ -38,7 +38,8 @@ ui = navbarPage("Welcome!",
         ),
       
       # Show a plot of the generated distribution
-      mainPanel(# Create tabs for page
+      # Create tabs for page
+      mainPanel( width = 9,
         tabsetPanel(
           type = "tabs",
           tabPanel("Donut Chart", plotlyOutput("Donut")),
