@@ -7,7 +7,7 @@ library(ggplot2)
 source('./function.R')
 
 # Read dataset
-pets <- read.csv("Lost__found__adoptable_pets.csv", stringsAsFactors = FALSE, sep = ",", header = TRUE)
+pets <- read.csv("Lost__found__adoptable_pets.csv", stringsAsFactors = FALSE, sep = ",", header = TRUE, na.strings=c("","Not Available"))   
 pets <- select(pets, impound_no, Animal_ID, Record_Type, Current_Location, Animal_Name, animal_type, Age, Animal_Gender,
                Animal_Breed, Animal_Color, Date, City, State, Zip)
 # Define server logic required to draw a histogram/donut
