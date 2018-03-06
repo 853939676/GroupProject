@@ -14,16 +14,15 @@ plot <- function(data, style, group, status, type) {
   
   animal_type_data <- data.frame()
   
+  
   if ("Dog" %in% group) {
-    animal_type_data <- rbind(animal_type_data, dog)
-    }else if ("Cat" %in% group) {
-      animal_type_data <- rbind(animal_type_data, cat)
-       }else if ("Other" %in% group) {
-        animal_type_data <- rbind(animal_type_data, other)
-       }else{
-         animal_type_data <- rbind(animal_type_data, dog)
-       }
-         
+    animal_type_data <- rbind(animal_type_data, dog)}else{}
+  if ("Cat" %in% group) {
+    animal_type_data <- rbind(animal_type_data, cat)}else{}
+  if ("Other" %in% group) {
+    animal_type_data <- rbind(animal_type_data, other)}else{}
+     
+ 
   # filter dataset according to given Status
   # Adoptable, Lost, Found
   if (status == "A") {

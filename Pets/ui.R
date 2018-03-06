@@ -14,9 +14,9 @@ ui = navbarPage("Welcome!",
                     )
            ),
   
-  tabPanel("Table",
-           DT::dataTableOutput("Table")
-           ),
+  # tabPanel("Table",
+  #          DT::dataTableOutput("Table")
+  #          ),
   
   tabPanel("Plot",
     (sidebarLayout(

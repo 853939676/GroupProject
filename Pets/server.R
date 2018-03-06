@@ -13,9 +13,9 @@ pets <- select(pets, impound_no, Animal_ID, Record_Type, Current_Location, Anima
 # Define server logic required to draw a histogram/donut
 shinyServer(function(input, output) {
   #diaplay the whole dataframe
-  output$Table <- DT::renderDataTable({
-    DT::datatable(pets , options = list(lengthMenu = c(5, 30, 50), pageLength = 5))
-  })
+  # output$Table <- DT::renderDataTable({
+  #   DT::datatable(pets , options = list(lengthMenu = c(5, 30, 50), pageLength = 5))
+  # })
   
   #creat Donut chart
   output$Donut <- renderPlotly({
