@@ -12,8 +12,8 @@ For our project we wanted to manipulate the King County dataset for lost, found,
   * What percent of male/female pets have been lost/found/adoptable in the greater Seattle area.
   * What different breeds of pets have been lost/found/adoptable in the greater seattle area
   * There is also an ability to distinguuish between type of pet, such as dogs, cats, or birds etc.
- 
-
+  
+![](https://images.petsbest.com/marketing/blog/puppy-kitten-common-health-issues.jpg)  
 
 
 ## About the Dataset
