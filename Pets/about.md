@@ -21,7 +21,7 @@ We also supply a tab that contains a search bar so you can directly sift through
 
 ## About the Dataset
 
-We worked with a csv. file and the data was collected from the years 2014-2018. Here is where it can be found   
+We worked with a .csv file and the data was collected from the years 2014-2018. Here is where it can be found   
 > <https://data.kingcounty.gov/Pets/Lost-found-adoptable-pets/yaai-7frk>
 
 
