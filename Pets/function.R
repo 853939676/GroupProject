@@ -52,6 +52,7 @@ plot <- function(data, style, group, status, type) {
   }
 }
 
+
 donut_plot <- function(data) {
     p <- plot_ly(labels = data$x, values = data$y) %>%
       add_pie(hole = 0.6) %>%
